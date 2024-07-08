@@ -2,6 +2,7 @@ version: '3'
 services:
   openvpn:
     image: kylemanna/openvpn
+    container_name: openvpn
     cap_add:
       - NET_ADMIN
     restart: always
@@ -11,7 +12,7 @@ services:
       - ./openvpn-data:/etc/openvpn
     environment:
       - EASYRSA_BATCH=1
-      - EASYRSA_REQ_CN=changeme
+      - EASYRSA_REQ_CN=sdgoo
       - TZ=Asia/Shanghai
     dns:
       - 8.8.8.8
