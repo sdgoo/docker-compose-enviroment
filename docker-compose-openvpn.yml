@@ -18,9 +18,8 @@ services:
       - 8.8.8.8
     sysctls:
       - net.ipv4.ip_forward=1
-      - net.ipv6.conf.all.disable_ipv6=0
-      - net.ipv6.conf.default.forwarding=1
-      - net.ipv6.conf.all.forwarding=1
+      - net.ipv6.conf.all.disable_ipv6=1
+      - net.ipv6.conf.default.disable_ipv6=1
     networks:
       - vpn_net
     command: ["ovpn_run"]
