@@ -7,7 +7,7 @@ services:
       - NET_ADMIN
     restart: always
     ports:
-      - "8194:1194/udp"
+      - "8194:1194/tcp"
     volumes:
       - ./openvpn-data:/etc/openvpn
     environment:
