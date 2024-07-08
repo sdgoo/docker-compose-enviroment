@@ -1,10 +1,11 @@
 version: '3.7'
 services:
   elasticsearch-master:
-    image: elasticsearch:8.5.3
+    image: elasticsearch:8.12.2
     container_name: elasticsearch-master
     environment:
       - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
+      - TZ=Asia/Shanghai
     ulimits:
       memlock:
         soft: -1
@@ -20,10 +21,11 @@ services:
     networks:
       - net-es
   elasticsearch-slave:
-    image: elasticsearch:8.5.3
+    image: elasticsearch:8.12.2
     container_name: elasticsearch-slave
     environment:
       - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
+      - TZ=Asia/Shanghai
     ulimits:
       memlock:
         soft: -1
@@ -46,6 +48,7 @@ services:
       - SERVER_NAME=kibana-server
       - ELASTICSEARCH_HOSTS=http://elasticsearch-master:9200
       - I18N_LOCALE=zh-CN
+      - TZ=Asia/Shanghai
     ports:
       - "5601:5601"
     networks:
@@ -53,10 +56,12 @@ services:
     depends_on:
       - elasticsearch-master
   elasticvue:
-    image: cars10/elasticvue:1.0.4
+    image: cars10/elasticvue:1.0.8
     container_name: elasticvue
     ports:
       - "18080:8080"
+    environment:
+      - TZ=Asia/Shanghai
     networks:
       - net-es
     depends_on:
