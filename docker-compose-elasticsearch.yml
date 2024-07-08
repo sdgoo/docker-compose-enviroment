@@ -5,7 +5,7 @@ services:
     container_name: elasticsearch-master
     environment:
       - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
-      - TZ=Asia/Shanghai
+      - "TZ=Asia/Shanghai"
     ulimits:
       memlock:
         soft: -1
@@ -25,7 +25,7 @@ services:
     container_name: elasticsearch-slave
     environment:
       - "ES_JAVA_OPTS=-Xss512k -XX:NewRatio=1 -Xms1024m -Xmx1024m"
-      - TZ=Asia/Shanghai
+      - "TZ=Asia/Shanghai"
     ulimits:
       memlock:
         soft: -1
