@@ -23,7 +23,8 @@ services:
       - net.ipv6.conf.all.forwarding=1
       - net.ipv6.conf.default.forwarding=1
     networks:
-      - vpn_net
+      vpn_net:
+        - ipv4_address: 172.18.0.2
     command: ["ovpn_run"]
 
 networks:
